@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
     // array of anime
 let anime = ["Cowboy Bebop", "Dragonball Z", "Sailormoon", "Naruto", "One Piece", "Fullmetal Alchemist: Brotherhood", "Bleach", "Pokemon", "Kill la Kill"];
@@ -8,6 +8,8 @@ function animeName() {
     let aName = $(this).attr("data-name");
     console.log(aName);
 }
+
+//this function renders the buttons
 
 function renderButtons() {
 
@@ -26,5 +28,19 @@ function renderButtons() {
     }
 
 }
+
+//events
+
+//this function handles the event submit click
+
+$("#submit").on("click", function(event){
+
+    event.preventDefault();
+
+    let animeInput = $("anime-input").val().trim();
+
+    anime.push(animeInput);
+})
+
 
 });
