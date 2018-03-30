@@ -4,6 +4,32 @@ $(document).ready(function() {
 let anime = ["Cowboy Bebop", "Dragonball Z", "Sailormoon", "Naruto", "One Piece", "Fullmetal Alchemist: Brotherhood", "Bleach", "Pokemon", "Kill la Kill"];
 
 //capture anime name from submit button attribute & print out anime name
+function displayAnime() {
+    //create a variable that grabs anime attribute name
+    let animeName = $(this).attr("data-name");
+    //create a variable for api url
+    let queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animeName + "&api_key=EFMrrRT2uCQGsGGwxiSQ6pKBtrBNExmJ&limit=10";
+
+    
+    //AJAX CALL
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(giphy) {
+
+        console.log(giphy);
+
+        let rating = giphy.rating;
+        let gif = giphy.images.fixed_width.url;
+        let img = giphy.images.fixed_width_still.url;
+
+        $('#anime').append(img);
+        renderButtons();
+
+        console.log(rating);
+
+    });
+}
 
 
 function renderButtons() {
@@ -49,7 +75,7 @@ $("#addAnime").on("click", function(event){
     renderButtons();
 })
 
-//$(document).on("click", ".anime-btn", displayAnime);
+$(document).on("click", ".btn", displayAnime);
 
 //display initial buttons
 renderButtons();
