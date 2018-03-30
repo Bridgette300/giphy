@@ -18,18 +18,22 @@ function displayAnime() {
     }).then(function(giphy) {
 
         console.log(giphy);
+
+        //empty out anime in area
+        $("#anime").empty();
+
         //cycle through 10 items
         for (let j =  0; j < 10; j++ ) {
 
-        let rating = $("<p>").text(giphy.data[j].rating);
+        let rating = $("<p>").text('Gif Rating: ' + giphy.data[j].rating);
        // let gif = $("<img>"giphy.images.fixed_width.url;
-        let img = $("<img>").attr("src", giphy.data[j].images.fixed_width_still.url);
+        let img = $("<img>").attr({"src": giphy.data[j].images.fixed_height_still.url, "data-still":  giphy.data[j].images.fixed_height_still.url, "data-animate": giphy.data[j].images.fixed_height.url});
 
-
-        $('#anime').append(img, rating);
+       
+        $('#anime').append(rating, img);
         renderButtons();
 
-        console.log(rating);
+       
         }
 
     });
