@@ -8,7 +8,7 @@ function displayAnime() {
     //create a variable that grabs anime attribute name
     let animeName = $(this).attr("data-name");
     //create a variable for api url
-    let queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animeName + "&api_key=EFMrrRT2uCQGsGGwxiSQ6pKBtrBNExmJ&limit=10";
+    let queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animeName + "&api_key=EFMrrRT2uCQGsGGwxiSQ6pKBtrBNExmJ&limit=10";
 
     
     //AJAX CALL
