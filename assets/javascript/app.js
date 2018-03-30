@@ -18,15 +18,19 @@ function displayAnime() {
     }).then(function(giphy) {
 
         console.log(giphy);
+        //cycle through 10 items
+        for (let j =  0; j < 10; j++ ) {
 
-        let rating = giphy.rating;
-        let gif = giphy.images.fixed_width.url;
-        let img = giphy.images.fixed_width_still.url;
+        let rating = $("<p>").text(giphy.data[j].rating);
+       // let gif = $("<img>"giphy.images.fixed_width.url;
+        let img = $("<img>").attr("src", giphy.data[j].images.fixed_width_still.url);
 
-        $('#anime').append(img);
+
+        $('#anime').append(img, rating);
         renderButtons();
 
         console.log(rating);
+        }
 
     });
 }
